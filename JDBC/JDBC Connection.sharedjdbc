@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BWSharedResource>
-    <name>JDBC Connection</name>
-    <resourceType>ae.shared.JDBCSharedResource</resourceType>
-    <config>
-        <driver>com.mysql.jdbc.Driver</driver>
-        <maxConnections>10</maxConnections>
-        <loginTimeout>0</loginTimeout>
-        <connectionType>JDBC</connectionType>
-        <UseSharedJndiConfig>false</UseSharedJndiConfig>
-        <location>jdbc:mysql://localhost:3306/tibco_demo </location>
-        <user>root</user>
-        <password>admin</password>
-    </config>
-</BWSharedResource>
+<processDefinition name="SampleJDBCProcess">
+<activities>
+<jdbcActivity name="SelectCustomer">
+<username>admin</username>       <!-- Hardcoded username -->
+<password>password123</password> <!-- Hardcoded password -->
+<timeout>30000</timeout>  <!-- Hardcoded timeout -->
+<query>SELECT * FROM Customers</query>
+</jdbcActivity>
+        <jdbcActivity name="UpdateOrder">
+<username>${DB_USER}</username>
+<password>${DB_PASSWORD}</password> 
+<timeout>${DB_TIMEOUT}</timeout>
+<query>UPDATE Orders SET status='processed'</query>
+</jdbcActivity>
+</activities>
+</processDefinition>
+ 
