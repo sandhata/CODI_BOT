@@ -6,7 +6,7 @@
         <jdbcActivity name="UpdateOrder">
 <username>${DB_USER}</username>  <!-- Correct: variable -->
 <password>${DB_PASSWORD}</password> <!-- Correct: variable -->
-<timeout>30000</timeout>
+<timeout>${DB_TIMEOUT}</timeout>
 <query>UPDATE Orders SET status='processed'</query>
 </jdbcActivity>
 </activities>
