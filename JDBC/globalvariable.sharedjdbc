@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDefinition name="FullValidationTest">
+
+    <!-- ============================= -->
+    <!-- Global Variables Section -->
+    <!-- ============================= -->
+    <globalVariables>
+
+        <!-- ❌ Missing description (should trigger GV warning) -->
+        <globalVariable name="DB_USER">
+            <value>admin</value>
+        </globalVariable>
+
+        <!-- ✅ Properly defined global variable -->
+        <globalVariable name="DB_PASSWORD">
+            <description>Database password stored securely</description>
+            <value>${SECURE_DB_PASSWORD}</value>
+        </globalVariable>
+
+        <!-- ❌ Missing description -->
+        <globalVariable name="DB_TIMEOUT">
+            <value>30000</value>
+        </globalVariable>
+
+    </globalVariables>
+
+    <!-- ============================= -->
+    <!-- Activities Section -->
+    <!-- ============================= -->
+    <activities>
+
+        <!-- ❌ This JDBC will trigger 3 errors -->
+        <jdbcActivity name="InvalidJDBCActivity">
+            <username>admin</username>                <!-- Hardcoded -->
+            <password>password123</password>          <!-- Hardcoded -->
+            <timeout>30000</timeout>                  <!-- Hardcoded -->
+            <query>SELECT * FROM Customers</query>
+        </jdbcActivity>
+
+        <!-- ✅ This JDBC is fully correct -->
+        <jdbcActivity name="ValidJDBCActivity">
+            <username>${DB_USER}</username>
+            <password>${DB_PASSWORD}</password>
+            <timeout>${DB_TIMEOUT}</timeout>
+            <query>UPDATE Orders SET status='processed'</query>
+        </jdbcActivity>
+
+    </activities>
+
+</processDefinition>
