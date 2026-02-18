@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResources>
+
+    <!-- ✅ VALID JDBC Resource: uses ${} GV references → should PASS all rules -->
+    <BWSharedResource>
+        <name>JDBC_ORACLE_VALID</name>
+        <resourceType>ae.shared.JDBCSharedResource</resourceType>
+        <config>
+            <connection>ORACLE</connection>
+            <connectionType>JDBC</connectionType>
+            <location>jdbc:tibcosoftwareinc:oracle://tntnt05:1521;SID=tntdb1</location>
+            <maxConnections>10</maxConnections>
+            <driver>tibcosoftwareinc.jdbc.oracle.OracleDriver</driver>
+            <user>${DB_USER}</user>
+            <password>${DB_PASSWORD}</password>
+            <loginTimeout>${DB_TIMEOUT}</loginTimeout>
+        </config>
+    </BWSharedResource>
+
+    <!-- ❌ INVALID JDBC Resource: hardcoded user, password, loginTimeout → should FAIL -->
+    <BWSharedResource>
+        <name>JDBC_ORACLE_INVALID</name>
+        <resourceType>ae.shared.JDBCSharedResource</resourceType>
+        <config>
+            <connection>ORACLE</connection>
+            <connectionType>JDBC</connectionType>
+            <location>jdbc:tibcosoftwareinc:oracle://tntnt05:1521;SID=tntdb1</location>
+            <maxConnections>10</maxConnections>
+            <driver>tibcosoftwareinc.jdbc.oracle.OracleDriver</driver>
+            <user>tntqa</user>
+            <password>#!F6QCBJyDdfIjnk4X2AInV4MksMO/bJHV</password>
+            <loginTimeout>30</loginTimeout>
+        </config>
+    </BWSharedResource>
+
+</BWSharedResources>
