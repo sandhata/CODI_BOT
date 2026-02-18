@@ -15,13 +15,7 @@
             <password>${DB_PASSWORD}</password>
             <loginTimeout>${DB_TIMEOUT}</loginTimeout>
         </config>
-    </BWSharedResource>
-
-    <!-- ❌ INVALID JDBC Resource: hardcoded user, password, loginTimeout → should FAIL -->
-    <BWSharedResource>
-        <name>JDBC_ORACLE_INVALID</name>
-        <resourceType>ae.shared.JDBCSharedResource</resourceType>
-        <config>
+         <config>
             <connection>ORACLE</connection>
             <connectionType>JDBC</connectionType>
             <location>jdbc:tibcosoftwareinc:oracle://tntnt05:1521;SID=tntdb1</location>
@@ -33,4 +27,10 @@
         </config>
     </BWSharedResource>
 
-</BWSharedResources>
+    
+  
+        
+       
+
+
+
