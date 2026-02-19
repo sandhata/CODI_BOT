@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<globalVariables>
-
-    <!-- ❌ Missing description -->
-    <globalVariable name="DB_URL">
-        <value>jdbc:mysql://localhost:3306/test</value>
-    </globalVariable>
-
-</globalVariables>
