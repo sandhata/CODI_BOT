@@ -10,6 +10,5 @@
         <user>testerA</user>
         <password>#!qPEgOf+VXddDGHVRTko4d4y996OmyZoK</password>
         <connectionType>JDBC</connectionType>
-        <loginTimeout/>
     </config>
 </BWSharedResource>
