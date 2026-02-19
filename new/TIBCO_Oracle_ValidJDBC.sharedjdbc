@@ -10,7 +10,7 @@
             <connectionType>JDBC</connectionType>
             <UseSharedJndiConfig>false</UseSharedJndiConfig>
             <location>jdbc:tibcosoftwareinc:oracle://tntnt05:1521;SID=tntdb1</location>
-            <username>${DB_USER}</username>
+            <user>${DB_USER}</user>
             <password>${DB_PASSWORD}</password>
         </config>
     </BWSharedResource>
