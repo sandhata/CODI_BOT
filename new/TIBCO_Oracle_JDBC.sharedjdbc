@@ -5,7 +5,7 @@
     <config>
         <driver>tibcosoftwareinc.jdbc.oracle.OracleDriver</driver>
         <maxConnections>10</maxConnections>
-        <loginTimeout>100</loginTimeout>
+        <loginTimeout>10</loginTimeout>
         <connectionType>JDBC</connectionType>
         <UseSharedJndiConfig>false</UseSharedJndiConfig>
         <location>jdbc:tibcosoftwareinc:oracle://tntnt05:1521;SID=tntdb1</location>
