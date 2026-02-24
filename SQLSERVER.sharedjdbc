@@ -8,7 +8,7 @@
         <maxConnections>10</maxConnections>
         <driver>tibcosoftwareinc.jdbc.sqlserver.SQLServerDriver</driver>
        
-        <password>#!qPEgOf+VXddDGHVRTko4d4y996OmyZoK</password>
+       
         <connectionType>JDBC</connectionType>
     </config>
 </BWSharedResource>
