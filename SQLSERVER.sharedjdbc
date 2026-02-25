@@ -7,8 +7,8 @@
         <location>jdbc:tibcosoftwareinc:sqlserver://ANNALI-LT\ANNALISQLSERVER:80;databaseName=BW_database</location>
         <maxConnections>10</maxConnections>
         <driver>tibcosoftwareinc.jdbc.sqlserver.SQLServerDriver</driver>
-      
-       
+      <user>hema</user>
+       <password>123</password>
         <connectionType>JDBC</connectionType>
     </config>
 </BWSharedResource>
