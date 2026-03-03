@@ -21,9 +21,8 @@ jobs:
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
           echo "Found PR: $PR_NUMBER"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
-      # ✅ CHECKS PASSED → Enable auto-merge in repo settings + enable on PR
       - name: Enable auto-merge when CODi validation passes
         if: |
           github.event.state == 'success' &&
@@ -31,20 +30,17 @@ jobs:
         run: |
           echo "✅ Enabling auto-merge for PR #${{ steps.get-pr.outputs.pr_number }}"
 
-          # Enable auto-merge in repo settings
           gh api "repos/${{ github.repository }}" \
             --method PATCH \
             --field allow_auto_merge=true
 
-          # Enable auto-merge on the PR
           gh pr merge ${{ steps.get-pr.outputs.pr_number }} \
             --auto \
             --squash \
             --repo ${{ github.repository }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
-      # ❌ CHECKS FAILED → Disable auto-merge in repo settings entirely
       - name: Show merge pull request when CODi validation fails
         if: |
           github.event.state == 'failure' &&
@@ -52,10 +48,8 @@ jobs:
         run: |
           echo "❌ Disabling auto-merge setting for PR #${{ steps.get-pr.outputs.pr_number }}"
 
-          # Disable auto-merge in repo settings
-          # This forces GitHub to show "Merge pull request" button
           gh api "repos/${{ github.repository }}" \
             --method PATCH \
             --field allow_auto_merge=false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
