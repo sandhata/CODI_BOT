@@ -41,7 +41,16 @@ jobs:
           github.event.state == 'failure' &&
           steps.get-pr.outputs.pr_number != ''
         run: |
-          echo "❌ Disabling auto-merge for PR #${{ steps.get-pr.outputs.pr_number }}"
+          echo "❌ CODi failed - forcing Merge pull request button for PR #${{ steps.get-pr.outputs.pr_number }}"
+
+          # Enable first, then immediately disable
+          # This forces GitHub to show "Merge pull request" button
+          gh pr merge ${{ steps.get-pr.outputs.pr_number }} \
+            --auto --squash \
+            --repo ${{ github.repository }} || true
+
+          sleep 2
+
           gh pr merge ${{ steps.get-pr.outputs.pr_number }} \
             --disable-auto \
             --repo ${{ github.repository }}
