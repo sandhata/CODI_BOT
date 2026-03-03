@@ -1,9 +1,7 @@
 name: CODi Auto Merge Control
 
 on:
-  status:
-    branches:
-      - main
+  status
 
 jobs:
   toggle-merge:
@@ -14,9 +12,12 @@ jobs:
       - name: Get PR number from commit SHA
         id: get-pr
         run: |
-          PR_NUMBER=$(gh api \
-            "repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" \
-            --jq '.[0].number')
+          SHA="${{ github.event.sha }}"
+          echo "Looking for PR with SHA: $SHA"
+
+          PR_NUMBER=$(gh api "repos/${{ github.repository }}/pulls?state=open&per_page=100" \
+            --jq ".[] | select(.head.sha == \"$SHA\") | .number" | head -1)
+
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
           echo "Found PR: $PR_NUMBER"
         env:
