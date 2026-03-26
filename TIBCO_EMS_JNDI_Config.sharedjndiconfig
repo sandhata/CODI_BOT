@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource>
+    <n>TIBCO_EMS_JNDI_Config</n>
+    <resourceType>ae.shared.JNDIConfiguration</resourceType>
+    <config>
+        <NamingEnvironment>
+            <UseJNDI>true</UseJNDI>
+            <ProviderURL>tcp://localhost:7222</ProviderURL>
+            <NamingURL>tibjmsnaming://localhost:7222</NamingURL>
+            <NamingInitialContextFactory>com.tibco.tibjms.naming.TibjmsInitialContextFactory</NamingInitialContextFactory>
+            <SecurityPrincipal>admin</SecurityPrincipal>
+            <SecurityCredentials>pass123</SecurityCredentials>
+        </NamingEnvironment>
+    </config>
+</BWSharedResource>
