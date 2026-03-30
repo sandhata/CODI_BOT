@@ -3,9 +3,9 @@
     <name>OracleConnection-OracleThinDriver</name>
     <resourceType>ae.shared.JDBCSharedResource</resourceType>
     <config>
-        <driver>oracle.jdbc.driver.OracleDriver (thin)</driver>
-        <maxConnections>10</maxConnections>
-        <loginTimeout>0</loginTimeout>
+        <driver>%%JDBC_DRIVER%%</driver>
+        <maxConnections>%%JDBC_MAX_CONNECTIONS%%</maxConnections>
+        <loginTimeout>%%JDBC_LOGIN_TIMEOUT%%</loginTimeout>
         <connectionType>JDBC</connectionType>
         <UseSharedJndiConfig>false</UseSharedJndiConfig>
         <location>%%DBURL%%</location>
